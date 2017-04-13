@@ -1,3 +1,6 @@
+body{
+  margin-top: 50px;
+}
 .img-size{
   height: 250px;
   width: 200px;
@@ -8,6 +11,7 @@
 .name{
   font-weight: bold;
   font-family: cursive;
+  color: #2B3E51;
 }
 hr.style1 {
 	width : 5px;

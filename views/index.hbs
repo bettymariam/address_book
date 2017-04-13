@@ -2,13 +2,13 @@
   <h1 class="name info">Address book</h1>
   <div class="col-md-2">
     <form action="/contacts/new">
-      <button class="btn btn-primary btn-link info" type="submit" value="New"><span class="glyphicon glyphicon-pencil"> New contact</span></button>
+      <button class="btn btn-primary btn-link info name" type="submit" value="New"><span class="glyphicon glyphicon-pencil"> New contact</span></button>
     </form>
   </div>
   <hr>
   {{#each contacts}}
     <div class="panel panel-warning">
-      <div class="panel-heading"><h4 class="name">{{first_name }} {{last_name}}</h4></div>
+      <div class="panel-heading"><a class="name" href="/contacts/{{id}}">{{first_name }} {{last_name}}</a></div>
       <div class="panel-body margin">
         <div class="col-sm-6"><img class="img-size" src="{{image_url}}"></div>
         <div class="col-sm-5">

@@ -26,6 +26,17 @@ router.get('/new', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next) {
+  knex.from('contacts').innerJoin('addresses', 'contacts.address_id', 'addresses.id')
+  .where('contacts.id', req.params.id)
+  .then( contact => {
+    res.render(`addressBook/showContact`, contact[0]);
+  })
+  .catch( error => {
+    console.log(error);
+  })
+});
+
 router.post('/', (req,res,next) => {
   let address = {
     line_1: req.body.line_1,
@@ -33,7 +44,7 @@ router.post('/', (req,res,next) => {
     city: req.body.city,
     zip: req.body.zip
   }
-  db('addresses')
+  knex('addresses')
   .insert(address)
   .returning('id')
   .then(id  => {
@@ -44,9 +55,9 @@ router.post('/', (req,res,next) => {
       last_name: req.body.last_name,
       phone_number: req.body.phone_number,
       email_address: req.body.email_address,
-      poster_url: req.body.poster_url
+      image_url: req.body.image_url
     }
-    db('contacts')
+    knex('contacts')
     .insert(contact)
     .returning('id')
     .then(id => {
@@ -54,5 +65,29 @@ router.post('/', (req,res,next) => {
     })
   })
 })
+
+router.delete('/:id',(req,res,next) => {
+    let id = req.params.id
+    knex('contacts')
+    .del()
+    .where({id})
+    .returning('address_id')
+    .then(addressID => {
+      knex('contacts')
+      .count()
+      .where('address_id', addressID[0])
+      .then(count => {
+        if (count[0] === 0) {
+          knex('addresses')
+          .del()
+          .where('id', addressID[0])
+          .then(() => {
+            res.redirect('/contacts')
+          })
+        }
+          res.redirect('/contacts')
+      })
+    })
+  })
 
 module.exports = router;
