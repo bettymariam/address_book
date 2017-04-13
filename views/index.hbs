@@ -1,2 +1,10 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Address Book</h1>
+<div class="container">
+  {{#each contacts}}
+  <div class=row>
+    <div>
+      {{first_name }}{{last_name}}
+    </div>
+  </div>
+  {{/each}}
+</div>
