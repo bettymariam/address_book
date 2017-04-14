@@ -1,32 +1,32 @@
 <div class="container col-mid-2">
   <h1>{{title}}</h1>
-  <form class="well" method="POST" action="/contacts/{{#if id }}{{ id }}?_method=PUT{{/if}}">
+  <form class="well" method="POST" action="/contacts/{{#if contact.contact_id }}{{contact.contact_id}}?_method=PUT{{/if}}">
     <div class="form-group">
       <label for="first_name">First Name</label>
-      <input type="text" name="first_name" class="form-control" id="first_name" value={{first_name}}>
+      <input type="text" name="first_name" class="form-control" id="first_name" value={{contact.first_name}}>
     </div>
     <div class="form-group">
       <label for="last_name">Last Name</label>
-      <input type="text" name="last_name" class="form-control" id="last_name" value={{last_name}}>
+      <input type="text" name="last_name" class="form-control" id="last_name" value={{contact.last_name}}>
     </div>
     <div class="form-group">
       <label for="phone_number">Phone Number</label>
-      <input type="text" class="form-control" id="phone_number" name="phone_number" value={{phone_number}}>
+      <input type="text" class="form-control" id="phone_number" name="phone_number" value={{contact.phone_number}}>
     </div>
     <div class="form-group">
       <label for="email_address">Email</label>
-      <input class="form-control" id="email_address" name="email_address" value={{email_address}}></input>
+      <input class="form-control" id="email_address" name="email_address" value={{contact.email_address}}></input>
     </div>
     <div class="form-group">
       <label for="image_url">Image url</label>
-      <input class="form-control" type="text" id="image_url" name="image_url" value={{image_url}}>
+      <input class="form-control" type="text" id="image_url" name="image_url" value={{contact.image_url}}>
     </div>
-    {{#unless id}}
+    {{#unless contact.contact_id}}
     <div class="form-group">
       <label for="addressDropdown">Select an address </label>
       <select id="addressDropdown">
         <option value=""></option>
-        {{#each result}}
+        {{#each contact}}
           <option value="{{addressJson}}">{{addressString}}</option>
         {{/each}}
       </select>
@@ -34,19 +34,19 @@
     {{/unless}}
     <div class="form-group">
       <label for="line_1">Address line 1</label>
-      <input type="text" name="line_1" class="form-control" id="line_1" value={{line_1}}>
+      <input type="text" name="line_1" class="form-control" id="line_1" value={{contact.line_1}}>
     </div>
     <div class="form-group">
       <label for="line_2">Address line 2</label>
-      <input type="text" class="form-control" id="line_2" name="line_2" value={{line_2}}>
+      <input type="text" class="form-control" id="line_2" name="line_2" value={{contact.line_2}}>
     </div>
     <div class="form-group">
       <label for="city">City</label>
-      <input type="text" class="form-control" id="city" name="city" value={{city}}></input>
+      <input type="text" class="form-control" id="city" name="city" value={{contact.city}}></input>
     </div>
     <div class="form-group">
       <label for="zip">Zip</label>
-      <input type="integer" id="zip" name="zip" value={{zip}}>
+      <input type="integer" id="zip" name="zip" value={{contact.zip}}>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>

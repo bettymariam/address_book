@@ -2,7 +2,7 @@
   <hr>
   {{#each contacts}}
     <div class="panel panel-warning">
-      <div class="panel-heading"><a class="name" href="/contacts/{{id}}">{{first_name }} {{last_name}}</a></div>
+      <div class="panel-heading"><a class="name" href="/contacts/{{contact_id}}">{{first_name }} {{last_name}}</a></div>
       <div class="panel-body margin">
         <div class="col-sm-6"><img class="img-size" src="{{image_url}}"></div>
         <div class="col-sm-5">
@@ -10,7 +10,7 @@
           <p><span class="glyphicon glyphicon-envelope"></span> {{email_address}}</p>
           <p><span class="glyphicon glyphicon-home"></span> {{line_1}} {{line_2}}</p>
           <p>{{city }} {{zip}}</p>
-          <form method="POST" action="/contacts/{{id}}?_method=DELETE">
+          <form method="POST" action="/contacts/{{contact_id}}?_method=DELETE">
             <button class="btn btn-primary" type="submit" value="Delete"><span class="glyphicon glyphicon-trash"> Delete</span></button>
           </form>
         </div>

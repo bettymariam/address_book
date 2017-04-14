@@ -1,10 +1,5 @@
 <div class="container col-md-7 col-sm-offset-2 well">
   <h1 class="name info">Contact Details</h1>
-  <div>
-    <form action="/contacts/new">
-      <button class="btn btn-primary info" type="submit" value="New"><span class="glyphicon glyphicon-pencil"> New contact</span></button>
-    </form>
-  </div>
   <hr>
     <div class="panel panel-warning">
       <div class="panel-heading"><h4 class="name">{{first_name }} {{last_name}}</h4></div>
@@ -16,12 +11,12 @@
           <p><span class="glyphicon glyphicon-home"></span> {{line_1}} {{line_2}}</p>
           <p>{{city }} {{zip}}</p>
           <div class="info">
-            <form action="/contacts/edit/{{id}}">
+            <a href="/contacts/edit/{{contact_id}}">
               <button class="btn btn-primary" type="submit" value="Edit"><span class="glyphicon glyphicon-pencil"> Edit</span></button>
-            </form>
+            </a>
           </div>
           <div class="info">
-            <form method="POST" action="/contacts/{{id}}?_method=DELETE">
+            <form method="POST" action="/contacts/{{contact_id}}?_method=DELETE">
               <button class="btn btn-primary" type="submit" value="Delete"><span class="glyphicon glyphicon-trash"> Delete</span></button>
             </form>
           </div>
