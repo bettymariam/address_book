@@ -1,8 +1,8 @@
 <div class="container col-md-7 col-sm-offset-2 well">
   <h1 class="name info">Contact Details</h1>
-  <div class="col-md-2">
+  <div>
     <form action="/contacts/new">
-      <button class="btn btn-primary btn-link info" type="submit" value="New"><span class="glyphicon glyphicon-pencil"> New contact</span></button>
+      <button class="btn btn-primary info" type="submit" value="New"><span class="glyphicon glyphicon-pencil"> New contact</span></button>
     </form>
   </div>
   <hr>
@@ -15,9 +15,16 @@
           <p><span class="glyphicon glyphicon-envelope"></span> {{email_address}}</p>
           <p><span class="glyphicon glyphicon-home"></span> {{line_1}} {{line_2}}</p>
           <p>{{city }} {{zip}}</p>
-          <form method="POST" action="/contacts/{{id}}?_method=DELETE">
-            <button class="btn btn-primary" type="submit" value="Delete"><span class="glyphicon glyphicon-trash"> Delete</span></button>
-          </form>
+          <div class="info">
+            <form action="/contacts/edit/{{id}}">
+              <button class="btn btn-primary" type="submit" value="Edit"><span class="glyphicon glyphicon-pencil"> Edit</span></button>
+            </form>
+          </div>
+          <div class="info">
+            <form method="POST" action="/contacts/{{id}}?_method=DELETE">
+              <button class="btn btn-primary" type="submit" value="Delete"><span class="glyphicon glyphicon-trash"> Delete</span></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

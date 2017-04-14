@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
+var override = require('method-override');
 
 var index = require('./routes/index');
 var contacts = require('./routes/contacts');
@@ -21,6 +22,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(override('_method'));
 
 app.use('/', index);
 app.use('/contacts', contacts);
