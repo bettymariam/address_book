@@ -19,7 +19,7 @@ router.get('/new', function(req, res, next) {
       el.addressJson = JSON.stringify(el);
       el.addressString = el.line_1 + ' ' + el.line_2 + ' ' + el.city + '  ' + el.zip;
     })
-    res.render('addressBook/newContact', {result});
+    res.render('addressBook/newContact', {title: 'New Contact', result:result});
   })
   .catch( error => {
     console.log(error);
@@ -42,7 +42,7 @@ router.get('/edit/:id', function(req, res, next) {
   knex.from('contacts').innerJoin('addresses', 'contacts.address_id', 'addresses.id')
   .where('contacts.id', req.params.id)
   .then( contact => {
-    res.render(`addressBook/edit`, contact[0]);
+    res.render(`addressBook/edit`, {title: 'Edit Contact', contact : contact[0]});
   })
   .catch( error => {
     console.log(error);

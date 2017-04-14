@@ -1,6 +1,4 @@
-body{
-  margin-top: 50px;
-}
+
 .img-size{
   height: 250px;
   width: 200px;
@@ -15,4 +13,9 @@ body{
 }
 hr.style1 {
 	width : 5px;
+}
+
+.nav-item {
+  font-weight: bold;
+  font-family: cursive;
 }
